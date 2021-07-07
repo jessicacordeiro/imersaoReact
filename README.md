@@ -1,2 +1,2 @@
-# imersaoReact
-Recriação do Orkut em React  ✨ - Alura
+# Imersão React - Alura ⚛
+Recriação do Orkut em React ✨
