@@ -1,7 +1,7 @@
-import MainGrid from '../src/componets/mainGrid';
-import Box from '../src/componets/Box';
+import MainGrid from '../src/components/MainGrid';
+import Box from '../src/components/Box';
 import { AlurakutMenu, OrkutNostalgicIconSet } from '../src/lib/AlurakutCommons';
-import { ProfileRelationsBoxWrapper } from '../src/componets/ProfilesRelations';
+import { ProfileRelationsBoxWrapper } from '../src/components/ProfilesRelations'
 
 function ProfileSidebar() {
   const githubUser = 'jessicacordeiro';
@@ -26,7 +26,7 @@ export default function Home() {
           <Box>
             <h1 className="title">Bem vindo</h1>
 
-            <OrkutNostalgicIconSet />
+            <OrkutNostalgicIconSet confianca="3" legal="2" sexy="3" />
           </Box>
         </div>
         <div className="profileRelationsArea" style={{ gridArea: 'profileRelationsArea' }}>
@@ -49,7 +49,7 @@ export default function Home() {
             </ul>
           </ProfileRelationsBoxWrapper>
           <Box>
-            Minhas Comunidades
+            <h2 className="smallTitle">Minhas Comunidades</h2>
           </Box>
         </div>
       </MainGrid>

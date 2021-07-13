@@ -1,5 +1,31 @@
-import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import { useState } from 'react';
+import { createGlobalStyle, ThemeConsumer, ThemeProvider } from 'styled-components';
+import DarkModeToggle from '../src/lib/DarkModeToggle';
 import { AlurakutMenu, AlurakutStyles } from '../src/lib/AlurakutCommons';
+
+const LightTheme = {
+  paginaBackground: "#DDCCE1",
+  navBg: "#68588F",
+  barraPesquisa: "#A389C8",
+  textoColor: "#000000",
+  boxBg: "#ffffff",
+  icon: "#DDCCE1"
+}
+
+const DarkTheme = {
+  paginaBackground: "#363A5B",
+  navBg: "#050A30",
+  barraPesquisa: "#4E5482",
+  textoColor: "#050A30",
+  boxBg: "#ffffff",
+  icon: "#363A5B"
+}
+
+const themes = {
+  light: LightTheme,
+  dark: DarkTheme
+}
+
 
 const GlobalStyle = createGlobalStyle`
   /* Reset CSS */
@@ -12,7 +38,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: sans-serif;
-    background: #D9E6F6;
+    background: ${props => themes[props.theme].paginaBackground };
   }
 
   #__next {
@@ -30,18 +56,14 @@ const GlobalStyle = createGlobalStyle`
   ${AlurakutStyles}
 `
 
-const theme = {
-  colors: {
-    primary: '#0070f3',
-  },
-}
-
 export default function App({ Component, pageProps }) {
+  const[theme, setTheme] = useState("light")
   return (
     <>
-      <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+      <GlobalStyle theme={theme} />
+      <ThemeProvider theme={themes[theme]}>
+        <DarkModeToggle theme={theme} setTheme = {setTheme} />
+        <Component {...pageProps} theme = {themes[theme]} />
       </ThemeProvider>
     </>
   )

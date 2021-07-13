@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 const Box = styled.div `
-  background: #ffffff;
+  background: ${props => props.theme.boxBg};
+  color: ${props => props.theme.textoColor};
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 10px;
@@ -26,7 +27,7 @@ const Box = styled.div `
     margin-bottom: 20px;
     font-size: 16px;
     font-weight: 700;
-    color: #333333;
+    color: #000000;
     margin-bottom: 20px;
   }
   hr {
