@@ -6,7 +6,6 @@ const Box = styled.div `
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 10px;
-  overflow-y: scroll;
 
   .boxLink {
     font-size: 14px;
