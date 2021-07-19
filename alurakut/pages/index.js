@@ -22,14 +22,49 @@ function ProfileSidebar() {
   )
 }
 
+function ProfileRelationsBox(propriedades) {
+  return (
+    <ProfileRelationsBoxWrapper>
+      <h2 className="smallTitle">{propriedades.titulo} ({propriedades.items.length})</h2>
+      <ul>
+        {propriedades.items.map((itemAtual) => {
+          return (
+          <li key={itemAtual.id}>
+            <a href={`https://github.com/${itemAtual.login}`}>
+              <img src={itemAtual.avatar_url} />
+              <span>{itemAtual.login}</span>
+            </a>
+          </li>
+          )
+        })}
+      </ul>
+    </ProfileRelationsBoxWrapper>
+  )
+}
+
 export default function Home() {
+  const usuarioAleatorio = 'jessicacordeiro';
+
   const [minhasComunidades, setMinhasComunidades] = React.useState([{
     id: '12536',
     titulo: 'Eu odeio acordar cedo',
-    image: 'https://alurakut.vercel.app/capa-comunidade-01.jpg'
+    image: 'https://alurakut.vercel.app/capa-comunidade-01.jpg',
+    link: 'https://www.facebook.com/OdeioAcordarCedoBR'
   }]);
   // const minhasComunidades = ['Alurakut'];
-  const meusAmigos = ['rafaballerini', 'peas', 'omariosouto', 'SpruceGabriela', 'codethi', 'SilvioMachado', 'jessicacordeiro']
+  const meusAmigos = ['rafaballerini', 'peas', 'omariosouto', 'SpruceGabriela', 'codethi', 'SilvioMachado', 'juunegreiros']
+
+  const [seguidores, setSeguidores] = React.useState([]);
+
+  React.useEffect(function() {
+    fetch('https://api.github.com/users/'+usuarioAleatorio+'/followers')
+    .then(function(respostaDoServidor) {
+      return respostaDoServidor.json();
+    })
+    .then(function(respostaCompleta) {
+      setSeguidores(respostaCompleta);
+    })
+  }, [])
 
   return (
     <>
@@ -42,7 +77,7 @@ export default function Home() {
           <Box>
             <h1 className="title">Bem vindo(a), Jéssica</h1>
 
-            <OrkutNostalgicIconSet confianca="3" legal="2" sexy="3" />
+            <OrkutNostalgicIconSet recados="5" fotos="20" fas="10" mensagens="40" confianca="3" legal="2" sexy="3" />
           </Box>
 
           <Box>
@@ -53,11 +88,13 @@ export default function Home() {
 
               console.log('Campo: ', dadosForm.get('titulo'));
               console.log('Campo: ', dadosForm.get('image'));
+              console.log('Campo: ', dadosForm.get('link'));
 
               const minhaComunidade = {
                 id: new Date().toISOString(),
                 titulo: dadosForm.get('titulo'),
-                image: dadosForm.get('image')
+                image: dadosForm.get('image'),
+                link: dadosForm.get('link')
               }
               const comunidadesAtualizadas = [...minhasComunidades, minhaComunidade];
               setMinhasComunidades(comunidadesAtualizadas)
@@ -65,8 +102,13 @@ export default function Home() {
               <div>
                 <input placeholder="Qual vai ser o nome da sua comunidade?" name="titulo" aria-label="Qual vai ser o nome da sua comunidade?" type="text" />
               </div>
+
               <div>
-                <input placeholder="Coloque uma URL para usarmos de capa" name="image" aria-label="Coloque uma URL para usarmos de capa" />
+                <input placeholder="Coloque a URL da imagem para usarmos de capa" name="image" placeholder="Coloque a URL da imagem para usarmos de capa" />
+              </div>
+
+              <div>
+                <input placeholder="Coloque uma URL da comunidade externa" name="link" aria-label="Coloque uma URL da comunidade externa" />
               </div>
 
               <button>Criar comunidade</button>
@@ -81,7 +123,7 @@ export default function Home() {
             {meusAmigos.map((itemAtual) => {
               return (
                 <li key={itemAtual}>
-                  <a href={`/users/${itemAtual}`}>
+                  <a href={`https://github.com/${itemAtual}`}>
                     <img src={`https://github.com/${itemAtual}.png`} />
                     <span>{itemAtual}</span>
                   </a>
@@ -90,6 +132,9 @@ export default function Home() {
             })}
             </ul>
           </ProfileRelationsBoxWrapper>
+        
+          <ProfileRelationsBox titulo = "Seguidores" items = {seguidores}/>
+
           <ProfileRelationsBoxWrapper>
             <h2 className="smallTitle">Minhas Comunidades ({minhasComunidades.length})</h2>
 
@@ -97,7 +142,7 @@ export default function Home() {
             {minhasComunidades.map((itemAtual) => {
               return (
                 <li key={itemAtual.id}>
-                  <a href={`/users/${itemAtual.titulo}`} key={itemAtual.titulo}>
+                  <a href={`${itemAtual.link}`}>
                     <img src={itemAtual.image} />
                     <span>{itemAtual.titulo}</span>
                   </a>
