@@ -34,5 +34,5 @@
     - [ ] Criar página de perfil do usuário;
     - [ ] Subir a sua aplicação na Vercel e compartilhar com a gente.
 
-### Aproveita e deixa algum comentário sobre o projeto ou alguma sugestão! (será muito bem-vinda).
+------> Aproveita e deixa algum comentário sobre o projeto ou alguma sugestão! (será muito bem-vinda).
 
