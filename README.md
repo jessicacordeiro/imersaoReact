@@ -34,5 +34,8 @@
     - [ ] Criar página de perfil do usuário;
     - [ ] Subir a sua aplicação na Vercel e compartilhar com a gente.
 
-------> Aproveita e deixa algum comentário sobre o projeto ou alguma sugestão! (será muito bem-vinda).
+<h2>📺 Imagens do projeto</h2>
 
+<img align="center" src="https://i.imgur.com/bh3jkZy.png" />
+
+------> Aproveita e deixa algum comentário sobre o projeto ou alguma sugestão! (será muito bem-vinda).
