@@ -7,7 +7,6 @@
 
 ## 📚 Desafios da Imersão
   - Aula 01
-    - [x] Pegar os dados da API do GitHub e listar seus seguidores;
     - [x] Adicionar quão confiável, legal e sexy você é;
     - [ ] Usar Strategy ao invés de vários ifs no css;
     - [x] Separar e organizar o seu código;
@@ -20,7 +19,7 @@
     - [x] Adicionar o seu projeto na nossa vitrine;
     - [x] Deixar o seu read me do projeto bonitão.
   - Aula 03
-    - [x] Terminar de listar seus seguidores através da api do Github;
+    - [x] Pegar os dados da API do GitHub e listar seus seguidores;
     - [x] Adicionar suas comunidades no DatoCMS;
     - [x] Organizar os seus dados, pensando no que irá querer que apareça no seu Alurakut e criando os modelos que precisar;
     - [x] Subir sua aplicação na Vercel.
